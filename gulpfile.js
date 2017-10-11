@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var inject = require('gulp-inject');
 var wiredep = require('wiredep').stream;
 var notify = require("gulp-notify");
+var browserSync = require('browser-sync');
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -50,4 +51,17 @@ gulp.task('html', ['styles'], function(){
       sound: 'Submarine',
       onLast: true
     }))
+});
+
+gulp.task('html-watch', ['html'], browserSync.reload);
+gulp.task('sass-watch', ['styles'], browserSync.reload);
+
+gulp.task('default', function () {
+  browserSync({
+      server: {
+        baseDir: 'dist/'
+      }
+  });
+  gulp.watch('src/styles/*.scss', ['sass-watch']);
+  gulp.watch('src/*.html', ['html-watch']);
 });
