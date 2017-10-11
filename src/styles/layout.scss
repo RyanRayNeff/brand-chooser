@@ -1,4 +1,495 @@
-$primary-color: red;
-body {
-  background-color: $primary-color;
+//
+// Custom
+// --------------------------------------------------
+
+/* General styles
+-------------------------------------------------- */
+header {
+  margin: 0 auto;
+  background-size: cover;
+  // Makes bg image scale from the bottom left, so the text doesnt lay over the images
+  background-position: 0% 100%;
+  background-image:url('../images/Fluke-brand-choser-page-768x500.jpg');
+  @media (min-width: $screen-sm-min) {
+    background-image:url('../images/Fluke-brand-choser-page-1440x500.jpg');
+  }
+  background-repeat: no-repeat;
+  padding: 30px 0;
+  @media (min-width: 500px) { 
+    padding: 130px 0;
+    .line-breaker {
+      display: block;
+    }
+  }
+  h1 {
+    font-weight: 700;
+  }
+}
+
+p.sub-title {
+  font-family: $headings-font-family;
+  font-size: 36px;
+  line-height: 1.1;
+}
+.slogan {
+  font-weight: 700;
+}
+
+.mission-statement {
+  h2 {
+    font-size: 24px;
+    margin-top: 0;
+    color: $fluke-blue-hover;
+    //font-weight: 700;
+  }
+  p {
+    font-size: 17px;
+    color: $fluke-button-hover;
+  }
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+// SVG brand logos with img fallbacks
+svg,
+img.brand-logo {
+  width: 160px;
+}
+.fluke-logo {
+  fill: #FFC20E;
+}
+.fn-text {
+  fill: #FFF;
+}
+.fn-logo {
+  fill: #253B6C;
+}
+
+// Dropdown box in the 6th card
+.open > .dropdown-menu {
+  width: 100%;
+}
+a.well {
+  display: block;
+  color: $text-color;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.well {
+  // This supports the child dropdown selectors absolute positioning
+  @media (min-width: $screen-sm-min) {
+
+
+    position: relative;
+    .btn-group {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 0 15px 15px;
+    }
+  }
+  h2 {
+    color: $fluke-blue-link;
+  }
+  // Drop down menu button text on 6th card
+  .btn {
+    line-height: 1.5;
+    text-align: left;
+    .caret {
+      float: right;
+      margin-top: 7px;
+    }
+  }
+  // &[data-toggle] {
+    transition: border 0.3s ease-in-out;
+    &:after {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    &:hover {
+      cursor: pointer;
+      // transform: scale(1.02, 1.02);
+      border: 1px solid $fluke-yellow;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+    @media (min-width: $screen-sm-min) {
+     min-height: 270px;
+   }
+   @media (min-width: $screen-md-min) {
+     min-height: 280px;
+   }
+   @media (min-width: $screen-lg-min) {
+     min-height: 270px;
+   }
+ }
+
+ .modal-header {
+  background: $fluke-white;
+}
+.close {
+  margin-right: 25px;
+  &:first-child {
+    display: inline-block;
+    margin-top: 5px;
+  }
+}
+.x-icon {
+ font-size: 30px;
+ color: $fluke-lines-and-pipes;
+ font-weight: bold;
+ position: absolute;
+ right: 20px;
+ top: 7px;
+}
+
+
+.tab-pane {
+  .country-group {
+    display: inline-block;
+    padding: .5em .2em;
+    width: 33%;
+    float: left;
+  }
+  .language-name {
+    &:after {
+      content: ")";
+    }
+    &:before {
+      content: "(";
+    }
+    display: inline;
+  }
+}
+
+// Country picker continet list
+.nav-pills > li {
+  &:not(:last-child) {
+    border-bottom: 1px solid $fluke-lines-and-pipes;
+  }
+  font-weight: 700;
+  &.active,
+  &:hover {
+    color: black;
+    &:after {
+      content: url(../images/angle-right.svg);
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}
+
+// We use tab-collapse.js to swith the lang picker tabs to accordion on mobile devices
+@media (max-width: $screen-xs-max) {
+  .panel-group .panel + .panel {
+    margin-top: 0;
+  }
+  .modal-body {
+    padding: 0 5px;
+  }
+  .language-name {
+    float: right;
+  }
+  .country-group {
+    a {
+    //makes the whole div clickable
+    display: block;
+    padding: 10px 20px 10px 25px;
+    width: 100%;
+  }
+  &:not(:last-child) {
+    border-bottom: 1px solid $fluke-lines-and-pipes;
+  }
+}
+//removes padding from heading so a larger area is clickable
+// TODO: posibly udate through variables?
+.panel-heading {
+  padding: 0;
+  a.js-tabcollapse-panel-heading {
+    //default panel title comes from panels.less. if you delete that, delete this
+    color: $fluke-blue-link;
+    padding: 10px 15px;
+    display: block;
+    width: 100%;
+    &:after {
+      content: "+";
+      float: right;
+      transition-timing-function: ease-in-out;
+      transition: .10s;
+      font-weight: bold;
+      //line-height: 0;
+    }
+    &:not(.collapsed) {
+      &:after {
+        transform: rotate(45deg);
+      }
+    }
+  }
+} 
+.js-tabcollapse-panel-body {
+  padding: 0;
+}
+}
+/* This is in the country picker.  This css was adapted from the 
+countryicons_shiny module. We weren't using the icon
+functions enough to warrant the use of countryicons_shiny and it's subsequent
+requirement countryicons. This css has been adapted to support uppercase classnames as well as the origional lowercase. */
+.countryicon-sprite.iconset-shiny {
+  width: 16px; height: 11px;
+  margin: 0; padding: 0;
+  background-image: url('../images/shiny-sprite.png');
+  display:inline-block;
+  margin-right: .5rem;
+  &.countrycode-ad { background-position: 0 -10px; }
+  &.countrycode-ae { background-position: 0 -31px; }
+  &.countrycode-af { background-position: 0 -52px; }
+  &.countrycode-ag { background-position: 0 -73px; }
+  &.countrycode-ai { background-position: 0 -94px; }
+  &.countrycode-al { background-position: 0 -115px; }
+  &.countrycode-am { background-position: 0 -136px; }
+  &.countrycode-an { background-position: 0 -157px; }
+  &.countrycode-ao { background-position: 0 -178px; }
+  &.countrycode-ar { background-position: 0 -199px; }
+  &.countrycode-as { background-position: 0 -220px; }
+  &.countrycode-at { background-position: 0 -241px; }
+  &.countrycode-au { background-position: 0 -262px; }
+  &.countrycode-aw { background-position: 0 -283px; }
+  &.countrycode-ax { background-position: 0 -304px; }
+  &.countrycode-az { background-position: 0 -325px; }
+  &.countrycode-ba { background-position: 0 -346px; }
+  &.countrycode-bb { background-position: 0 -367px; }
+  &.countrycode-bd { background-position: 0 -388px; }
+  &.countrycode-be { background-position: 0 -409px; }
+  &.countrycode-bf { background-position: 0 -430px; }
+  &.countrycode-bg { background-position: 0 -451px; }
+  &.countrycode-bh { background-position: 0 -472px; }
+  &.countrycode-bi { background-position: 0 -493px; }
+  &.countrycode-bj { background-position: 0 -514px; }
+  &.countrycode-bm { background-position: 0 -535px; }
+  &.countrycode-bn { background-position: 0 -556px; }
+  &.countrycode-bo { background-position: 0 -577px; }
+  &.countrycode-br { background-position: 0 -598px; }
+  &.countrycode-bs { background-position: 0 -619px; }
+  &.countrycode-bt { background-position: 0 -640px; }
+  &.countrycode-bv { background-position: 0 -661px; }
+  &.countrycode-bw { background-position: 0 -682px; }
+  &.countrycode-by { background-position: 0 -703px; }
+  &.countrycode-bz { background-position: 0 -724px; }
+  &.countrycode-ca { background-position: 0 -745px; }
+  &.countrycode-catalonia { background-position: 0 -766px; }
+  &.countrycode-cc { background-position: 0 -787px; }
+  &.countrycode-cd { background-position: 0 -808px; }
+  &.countrycode-cf { background-position: 0 -829px; }
+  &.countrycode-cg { background-position: 0 -850px; }
+  &.countrycode-ch { background-position: 0 -871px; }
+  &.countrycode-ci { background-position: 0 -892px; }
+  &.countrycode-ck { background-position: 0 -913px; }
+  &.countrycode-cl { background-position: 0 -934px; }
+  &.countrycode-cm { background-position: 0 -955px; }
+  &.countrycode-cn { background-position: 0 -976px; }
+  &.countrycode-co { background-position: 0 -997px; }
+  &.countrycode-cr { background-position: 0 -1018px; }
+  &.countrycode-cs { background-position: 0 -1039px; }
+  &.countrycode-cu { background-position: 0 -1060px; }
+  &.countrycode-cv { background-position: 0 -1081px; }
+  &.countrycode-cx { background-position: 0 -1102px; }
+  &.countrycode-cy { background-position: 0 -1123px; }
+  &.countrycode-cz { background-position: 0 -1144px; }
+  &.countrycode-de { background-position: 0 -1165px; }
+  &.countrycode-dj { background-position: 0 -1186px; }
+  &.countrycode-dk { background-position: 0 -1207px; }
+  &.countrycode-dm { background-position: 0 -1228px; }
+  &.countrycode-do { background-position: 0 -1249px; }
+  &.countrycode-dz { background-position: 0 -1270px; }
+  &.countrycode-ec { background-position: 0 -1291px; }
+  &.countrycode-ee { background-position: 0 -1312px; }
+  &.countrycode-eg { background-position: 0 -1333px; }
+  &.countrycode-eh { background-position: 0 -1354px; }
+  &.countrycode-england { background-position: 0 -1375px; }
+  &.countrycode-er { background-position: 0 -1396px; }
+  &.countrycode-es { background-position: 0 -1417px; }
+  &.countrycode-et { background-position: 0 -1438px; }
+  &.countrycode-europeanunion { background-position: 0 -1459px; }
+  &.countrycode-fam { background-position: 0 -1480px; }
+  &.countrycode-fi { background-position: 0 -1501px; }
+  &.countrycode-fj { background-position: 0 -1522px; }
+  &.countrycode-fk { background-position: 0 -1543px; }
+  &.countrycode-fm { background-position: 0 -1564px; }
+  &.countrycode-fo { background-position: 0 -1585px; }
+  &.countrycode-fr { background-position: 0 -1606px; }
+  &.countrycode-ga { background-position: 0 -1627px; }
+  &.countrycode-gb { background-position: 0 -1648px; }
+  &.countrycode-gd { background-position: 0 -1669px; }
+  &.countrycode-ge { background-position: 0 -1690px; }
+  &.countrycode-gf { background-position: 0 -1711px; }
+  &.countrycode-gh { background-position: 0 -1732px; }
+  &.countrycode-gi { background-position: 0 -1753px; }
+  &.countrycode-gl { background-position: 0 -1774px; }
+  &.countrycode-gm { background-position: 0 -1795px; }
+  &.countrycode-gn { background-position: 0 -1816px; }
+  &.countrycode-gp { background-position: 0 -1837px; }
+  &.countrycode-gq { background-position: 0 -1858px; }
+  &.countrycode-gr { background-position: 0 -1879px; }
+  &.countrycode-gs { background-position: 0 -1900px; }
+  &.countrycode-gt { background-position: 0 -1921px; }
+  &.countrycode-gu { background-position: 0 -1942px; }
+  &.countrycode-gw { background-position: 0 -1963px; }
+  &.countrycode-gy { background-position: 0 -1984px; }
+  &.countrycode-hk { background-position: -26px -10px; }
+  &.countrycode-hm { background-position: -26px -31px; }
+  &.countrycode-hn { background-position: -26px -52px; }
+  &.countrycode-hr { background-position: -26px -73px; }
+  &.countrycode-ht { background-position: -26px -94px; }
+  &.countrycode-hu { background-position: -26px -115px; }
+  &.countrycode-id { background-position: -26px -136px; }
+  &.countrycode-ie { background-position: -26px -157px; }
+  &.countrycode-il { background-position: -26px -178px; }
+  &.countrycode-in { background-position: -26px -199px; }
+  &.countrycode-io { background-position: -26px -220px; }
+  &.countrycode-iq { background-position: -26px -241px; }
+  &.countrycode-ir { background-position: -26px -262px; }
+  &.countrycode-is { background-position: -26px -283px; }
+  &.countrycode-it { background-position: -26px -304px; }
+  &.countrycode-jm { background-position: -26px -325px; }
+  &.countrycode-jo { background-position: -26px -346px; }
+  &.countrycode-jp { background-position: -26px -367px; }
+  &.countrycode-ke { background-position: -26px -388px; }
+  &.countrycode-kg { background-position: -26px -409px; }
+  &.countrycode-kh { background-position: -26px -430px; }
+  &.countrycode-ki { background-position: -26px -451px; }
+  &.countrycode-km { background-position: -26px -472px; }
+  &.countrycode-kn { background-position: -26px -493px; }
+  &.countrycode-kp { background-position: -26px -514px; }
+  &.countrycode-kr { background-position: -26px -535px; }
+  &.countrycode-kw { background-position: -26px -556px; }
+  &.countrycode-ky { background-position: -26px -577px; }
+  &.countrycode-kz { background-position: -26px -598px; }
+  &.countrycode-la { background-position: -26px -619px; }
+  &.countrycode-lb { background-position: -26px -640px; }
+  &.countrycode-lc { background-position: -26px -661px; }
+  &.countrycode-li { background-position: -26px -682px; }
+  &.countrycode-lk { background-position: -26px -703px; }
+  &.countrycode-lr { background-position: -26px -724px; }
+  &.countrycode-ls { background-position: -26px -745px; }
+  &.countrycode-lt { background-position: -26px -766px; }
+  &.countrycode-lu { background-position: -26px -787px; }
+  &.countrycode-lv { background-position: -26px -808px; }
+  &.countrycode-ly { background-position: -26px -829px; }
+  &.countrycode-ma { background-position: -26px -850px; }
+  &.countrycode-mc { background-position: -26px -871px; }
+  &.countrycode-md { background-position: -26px -892px; }
+  &.countrycode-me { background-position: -26px -913px; }
+  &.countrycode-mg { background-position: -26px -935px; }
+  &.countrycode-mh { background-position: -26px -956px; }
+  &.countrycode-mk { background-position: -26px -977px; }
+  &.countrycode-ml { background-position: -26px -998px; }
+  &.countrycode-mm { background-position: -26px -1019px; }
+  &.countrycode-mn { background-position: -26px -1040px; }
+  &.countrycode-mo { background-position: -26px -1061px; }
+  &.countrycode-mp { background-position: -26px -1082px; }
+  &.countrycode-mq { background-position: -26px -1103px; }
+  &.countrycode-mr { background-position: -26px -1124px; }
+  &.countrycode-ms { background-position: -26px -1145px; }
+  &.countrycode-mt { background-position: -26px -1166px; }
+  &.countrycode-mu { background-position: -26px -1187px; }
+  &.countrycode-mv { background-position: -26px -1208px; }
+  &.countrycode-mw { background-position: -26px -1229px; }
+  &.countrycode-mx { background-position: -26px -1250px; }
+  &.countrycode-my { background-position: -26px -1271px; }
+  &.countrycode-mz { background-position: -26px -1292px; }
+  &.countrycode-na { background-position: -26px -1313px; }
+  &.countrycode-nc { background-position: -26px -1334px; }
+  &.countrycode-ne { background-position: -26px -1355px; }
+  &.countrycode-nf { background-position: -26px -1376px; }
+  &.countrycode-ng { background-position: -26px -1397px; }
+  &.countrycode-ni { background-position: -26px -1418px; }
+  &.countrycode-nl { background-position: -26px -1439px; }
+  &.countrycode-no { background-position: -26px -1460px; }
+  &.countrycode-np { background-position: -26px -1481px; }
+  &.countrycode-nr { background-position: -26px -1502px; }
+  &.countrycode-nu { background-position: -26px -1523px; }
+  &.countrycode-nz { background-position: -26px -1544px; }
+  &.countrycode-om { background-position: -26px -1565px; }
+  &.countrycode-pa { background-position: -26px -1586px; }
+  &.countrycode-pe { background-position: -26px -1607px; }
+  &.countrycode-pf { background-position: -26px -1628px; }
+  &.countrycode-pg { background-position: -26px -1649px; }
+  &.countrycode-ph { background-position: -26px -1670px; }
+  &.countrycode-pk { background-position: -26px -1691px; }
+  &.countrycode-pl { background-position: -26px -1712px; }
+  &.countrycode-pm { background-position: -26px -1733px; }
+  &.countrycode-pn { background-position: -26px -1754px; }
+  &.countrycode-pr { background-position: -26px -1775px; }
+  &.countrycode-ps { background-position: -26px -1796px; }
+  &.countrycode-pt { background-position: -26px -1817px; }
+  &.countrycode-pw { background-position: -26px -1838px; }
+  &.countrycode-py { background-position: -26px -1859px; }
+  &.countrycode-qa { background-position: -26px -1880px; }
+  &.countrycode-re { background-position: -26px -1901px; }
+  &.countrycode-ro { background-position: -26px -1922px; }
+  &.countrycode-rs { background-position: -26px -1943px; }
+  &.countrycode-ru { background-position: -26px -1964px; }
+  &.countrycode-rw { background-position: -26px -1985px; }
+  &.countrycode-sa { background-position: -52px -10px; }
+  &.countrycode-sb { background-position: -52px -31px; }
+  &.countrycode-sc { background-position: -52px -52px; }
+  &.countrycode-scotland { background-position: -52px -73px; }
+  &.countrycode-sd { background-position: -52px -94px; }
+  &.countrycode-se { background-position: -52px -115px; }
+  &.countrycode-sg { background-position: -52px -136px; }
+  &.countrycode-sh { background-position: -52px -157px; }
+  &.countrycode-si { background-position: -52px -178px; }
+  &.countrycode-sj { background-position: -52px -199px; }
+  &.countrycode-sk { background-position: -52px -220px; }
+  &.countrycode-sl { background-position: -52px -241px; }
+  &.countrycode-sm { background-position: -52px -262px; }
+  &.countrycode-sn { background-position: -52px -283px; }
+  &.countrycode-so { background-position: -52px -304px; }
+  &.countrycode-sr { background-position: -52px -325px; }
+  &.countrycode-st { background-position: -52px -346px; }
+  &.countrycode-sv { background-position: -52px -367px; }
+  &.countrycode-sy { background-position: -52px -388px; }
+  &.countrycode-sz { background-position: -52px -409px; }
+  &.countrycode-tc { background-position: -52px -430px; }
+  &.countrycode-td { background-position: -52px -451px; }
+  &.countrycode-tf { background-position: -52px -472px; }
+  &.countrycode-tg { background-position: -52px -493px; }
+  &.countrycode-th { background-position: -52px -514px; }
+  &.countrycode-tj { background-position: -52px -535px; }
+  &.countrycode-tk { background-position: -52px -556px; }
+  &.countrycode-tl { background-position: -52px -577px; }
+  &.countrycode-tm { background-position: -52px -598px; }
+  &.countrycode-tn { background-position: -52px -619px; }
+  &.countrycode-to { background-position: -52px -640px; }
+  &.countrycode-tr { background-position: -52px -661px; }
+  &.countrycode-tt { background-position: -52px -682px; }
+  &.countrycode-tv { background-position: -52px -703px; }
+  &.countrycode-tw { background-position: -52px -724px; }
+  &.countrycode-tz { background-position: -52px -745px; }
+  &.countrycode-ua { background-position: -52px -766px; }
+  &.countrycode-ug { background-position: -52px -787px; }
+  &.countrycode-um { background-position: -52px -808px; }
+  &.countrycode-us { background-position: -52px -829px; }
+  &.countrycode-uy { background-position: -52px -850px; }
+  &.countrycode-uz { background-position: -52px -871px; }
+  &.countrycode-va { background-position: -52px -892px; }
+  &.countrycode-vc { background-position: -52px -913px; }
+  &.countrycode-ve { background-position: -52px -934px; }
+  &.countrycode-vg { background-position: -52px -955px; }
+  &.countrycode-vi { background-position: -52px -976px; }
+  &.countrycode-vn { background-position: -52px -997px; }
+  &.countrycode-vu { background-position: -52px -1018px; }
+  &.countrycode-wales { background-position: -52px -1039px; }
+  &.countrycode-wf { background-position: -52px -1060px; }
+  &.countrycode-ws { background-position: -52px -1081px; }
+  &.countrycode-ye { background-position: -52px -1102px; }
+  &.countrycode-yt { background-position: -52px -1123px; }
+  &.countrycode-za { background-position: -52px -1144px; }
+  &.countrycode-zm { background-position: -52px -1165px; }
+  &.countrycode-zw { background-position: -52px -1186px; }
+  &.countrycode-fa { background-position: -52px -1985px; } // Blank for Africa
+  &.countrycode-fb { background-position: -52px -1985px; } // Blank for Middle East
+  &.countrycode-fc { background-position: -52px -1985px; } // Blank for Rest of Europe
 }
