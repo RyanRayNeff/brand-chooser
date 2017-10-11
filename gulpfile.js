@@ -4,6 +4,7 @@ var inject = require('gulp-inject');
 var wiredep = require('wiredep').stream;
 var notify = require("gulp-notify");
 var browserSync = require('browser-sync');
+var htmlmin = require('gulp-htmlmin');
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -44,6 +45,14 @@ gulp.task('html', ['styles'], function(){
   };
   return gulp.src('src/index.html')
     .pipe(inject(injectFiles, injectOptions))
+    // This minifies html output. Comment it out to switch it off.
+    .pipe(htmlmin({
+      collapseWhitespace: true,
+      minifyCSS: true,
+      minifyJS: true,
+      removeComments: true,
+      useShortDoctype: true
+    }))
     .pipe(gulp.dest('dist'))
     .pipe(notify({
       title: "SASS Compiled",
