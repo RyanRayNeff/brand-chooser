@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var inject = require('gulp-inject');
+var wiredep = require('wiredep').stream;
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -17,6 +18,7 @@ gulp.task('styles', function(){
   };
 
   return gulp.src('src/main.scss')
+    .pipe(wiredep())
     .pipe(inject(injectAppFiles, injectAppOptions))
     .pipe(sass())
     .pipe(gulp.dest('dist/styles'));
