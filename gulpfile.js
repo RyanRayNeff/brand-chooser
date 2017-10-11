@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var inject = require('gulp-inject');
 var wiredep = require('wiredep').stream;
+var notify = require("gulp-notify");
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -40,8 +41,13 @@ gulp.task('html', ['styles'], function(){
     addRootSlash: false,
     ignorePath: ['src', 'dist']
   };
-
   return gulp.src('src/index.html')
     .pipe(inject(injectFiles, injectOptions))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist'))
+    .pipe(notify({
+      title: "SASS Compiled",
+      message: "All SASS files have been recompiled to CSS and you are a rockstar!.",
+      sound: 'Submarine',
+      onLast: true
+    }))
 });
