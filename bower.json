@@ -1,0 +1,17 @@
+{
+  "name": "brand-chooser-v5-sass",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Ryan Ray Neff"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
