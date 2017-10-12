@@ -5,7 +5,8 @@ var wiredep = require('wiredep').stream;
 var notify = require("gulp-notify");
 var browserSync = require('browser-sync');
 var htmlmin = require('gulp-htmlmin');
-var inlinesource = require('gulp-inline-source'); 
+var inlinesource = require('gulp-inline-source');
+var uncss = require('gulp-uncss');
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -34,6 +35,44 @@ gulp.task('styles', function(){
     .pipe(inject(injectGlobalFiles, injectGlobalOptions))
     .pipe(inject(injectAppFiles, injectAppOptions))
     .pipe(sass())
+//     .pipe(uncss({
+//             html: ['src/*.html'],
+//             ignore : [ /\.affix/,
+//                       /\.alert/,
+//                       /\.close/,
+//                       /\.collapse/,
+//                       /\.collapse\.in/,
+//                       /\.collapsing/,
+//                       /\.fade/,
+//                       /\.fade\.in/,
+//                       /\.has/,
+//                       /\.help/,
+//                       /\.in/,
+//                       /\.modal/,
+//                       /\.open/,
+//                       /\.popover/,
+//                       /\.tooltip/,
+//                       /\.tab-pane/,
+//                       /\.tab-pane\.active/,
+//                       /\.active/,
+//                       /\.js-tabcollapse-panel-body/,
+//                       /\.on/,
+//                       /\.shown/,
+//                       /\.bs/,
+//                       /\.panel-body/,
+//                       /\.show-tabs/,
+//                       /\.tabcollapse/,
+//                       /\.parentLi/,
+//                       /\.dropdown-menu/,
+//                       /\.collapsed/,
+//                       /\.tabpane/,
+//                       /\.tab-content/,
+//                       /\.panel-collapse/,
+//                       /\.hidden-xs/,
+//                       /\.accordion/,
+//                       /\.shown-accordion/,
+// /\.js-tabcollapse-panel-heading/],
+//             }))
     .pipe(gulp.dest('src/compiled-css'));
 });
 
