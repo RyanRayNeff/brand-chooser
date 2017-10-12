@@ -73,13 +73,18 @@ gulp.task('styles', function(){
 //                       /\.shown-accordion/,
 // /\.js-tabcollapse-panel-heading/],
 //             }))
-    .pipe(gulp.dest('src/compiled-css'));
+
+    // When inline injection is turned on, you'll want to switcht this back on
+    //.pipe(gulp.dest('src/compiled-css'));
+    .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('html', ['styles'], function(){
  
   return gulp.src('src/index.html')
-    .pipe(inlinesource())
+    // This inlines the css
+    // .pipe(inlinesource())
+    
     // This minifies html output. Comment it out to switch it off.
     // .pipe(htmlmin({
     //   collapseWhitespace: true,
@@ -88,6 +93,7 @@ gulp.task('html', ['styles'], function(){
     //   removeComments: true,
     //   useShortDoctype: true
     // }))
+    
     .pipe(gulp.dest('dist'))
     .pipe(notify({
       title: "SASS Compiled",
