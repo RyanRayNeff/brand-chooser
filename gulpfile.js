@@ -70,6 +70,7 @@ gulp.task('styles', function(){
 //                       /\.tabpane/,
 //                       /\.tab-content/,
 //                       /\.panel-collapse/,
+//                       /\.panel-group/,
 //                       /\.hidden-xs/,
 //                       /\.accordion/,
 //                       /\.shown-accordion/,

@@ -1347,7 +1347,7 @@ ol {
   ol ol {
     margin-bottom: 0; }
 
-.list-unstyled {
+.list-unstyled, #fluke-cal-modal .f-cal-languages {
   padding-left: 0;
   list-style: none; }
 
@@ -5175,11 +5175,11 @@ button.close {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
   .modal-sm {
-    width: 300px; } }
+    width: 350px; } }
 
 @media (min-width: 1033px) {
   .modal-lg {
-    width: 900px; } }
+    width: 1016px; } }
 
 .tooltip {
   position: absolute;
@@ -5931,13 +5931,6 @@ a.well {
   width: 33%;
   float: left; }
 
-.tab-pane .language-name {
-  display: inline; }
-  .tab-pane .language-name:after {
-    content: ")"; }
-  .tab-pane .language-name:before {
-    content: "("; }
-
 .nav-pills > li {
   font-weight: 700; }
   .nav-pills > li:not(:last-child) {
@@ -5953,57 +5946,86 @@ a.well {
 .modal-body {
   padding-top: 0; }
 
+.language-name {
+  display: inline; }
+  .language-name:after {
+    content: ")"; }
+  .language-name:before {
+    content: "("; }
+
+@media (min-width: 350px) {
+  #fluke-cal-modal .modal-dialog {
+    width: 350px;
+    margin: 30px auto; } }
+
+#fluke-cal-modal .modal-body {
+  padding: 0; }
+
+#fluke-cal-modal .f-cal-languages {
+  margin: 15px;
+  border: 1px solid #CCC; }
+  #fluke-cal-modal .f-cal-languages a {
+    display: block;
+    padding: 10px 15px;
+    width: 100%;
+    background-color: #FFF; }
+  #fluke-cal-modal .f-cal-languages li:not(:last-child) {
+    border-bottom: 2px solid #CCC; }
+
+#fluke-cal-modal .language-name {
+  float: right; }
+
 @media (max-width: 767px) {
-  .panel-group .panel + .panel {
+  #fluke-modal .panel-group .panel + .panel {
     margin-top: 0; }
-  .modal-body {
+  #fluke-modal .panel-group {
+    margin-right: 10px;
+    margin-left: 10px; }
+  #fluke-modal .modal-body {
     padding: 0 5px; }
-  .language-name {
+  #fluke-modal .language-name {
     float: right; }
-  .country-group a {
+  #fluke-modal .country-group a {
     display: block;
     padding: 10px 20px 10px 25px;
     width: 100%; }
-  .country-group:not(:last-child) {
-    border-bottom: 1px solid #CCC; }
-  .panel-heading {
-    padding: 0; }
-    .panel-heading a.js-tabcollapse-panel-heading {
-      color: #336699;
-      padding: 10px 15px;
-      display: block;
-      width: 100%; }
-      .panel-heading a.js-tabcollapse-panel-heading:after {
-        content: "+";
-        float: right;
-        transition-timing-function: ease-in-out;
-        transition: .10s;
-        font-weight: bold; }
-      .panel-heading a.js-tabcollapse-panel-heading:not(.collapsed):after {
-        transform: rotate(45deg); }
-  .js-tabcollapse-panel-body {
-    padding: 0; } }
+  #fluke-modal .country-group:not(:last-child) {
+    border-bottom: 1px solid #CCC; } }
 
-.country-select-prompt {
-  min-height: 190px; }
-  .country-select-prompt h2 {
+#fluke-modal .panel-heading {
+  padding: 0; }
+  #fluke-modal .panel-heading a.js-tabcollapse-panel-heading {
+    color: #336699;
+    padding: 10px 15px;
+    display: block;
+    width: 100%; }
+    #fluke-modal .panel-heading a.js-tabcollapse-panel-heading:after {
+      content: "+";
+      float: right;
+      transition-timing-function: ease-in-out;
+      transition: .10s;
+      font-weight: bold; }
+    #fluke-modal .panel-heading a.js-tabcollapse-panel-heading:not(.collapsed):after {
+      transform: rotate(45deg); }
+
+#fluke-modal .js-tabcollapse-panel-body {
+  padding: 0; }
+
+.world-map {
+  width: auto;
+  min-height: 170px;
+  margin: 15px;
+  background: url(../images/world-map.svg);
+  background-size: 350px auto;
+  background-repeat: no-repeat;
+  background-position: center; }
+  .world-map h2 {
     text-align: center;
     font-weight: 700;
     position: relative;
     top: 70px;
     z-index: 1;
     margin-top: 0; }
-  .country-select-prompt #world-map {
-    width: 350px;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 10px;
-    position: absolute; }
-    @media (max-width: 350px) {
-      .country-select-prompt #world-map {
-        width: auto; } }
 
 /* This is in the country picker.  This css was adapted from the 
 countryicons_shiny module. We weren't using the icon

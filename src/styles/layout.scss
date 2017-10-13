@@ -148,15 +148,6 @@ a.well {
     width: 33%;
     float: left;
   }
-  .language-name {
-    &:after {
-      content: ")";
-    }
-    &:before {
-      content: "(";
-    }
-    display: inline;
-  }
 }
 
 // Country picker continet list
@@ -179,10 +170,53 @@ a.well {
 .modal-body {
   padding-top: 0;
 }
+  .language-name {
+    &:after {
+      content: ")";
+    }
+    &:before {
+      content: "(";
+    }
+    display: inline;
+  }
+#fluke-cal-modal {
+  .modal-dialog {
+    @media(min-width: 350px) {
+      width: 350px;
+      margin: 30px auto;
+    }
+  }
+  .modal-body {
+    padding: 0;
+  }
+  .f-cal-languages {
+    margin: 15px;
+    border: 1px solid $fluke-lines-and-pipes;
+    @extend .list-unstyled;
+    a {
+    //makes the whole div clickable
+    display: block;
+    padding: 10px 15px;
+    width: 100%;
+    background-color: $fluke-white;
+  }
+    li:not(:last-child) {
+    border-bottom: 2px solid $fluke-lines-and-pipes;
+  }
+  }
+  .language-name {
+    float: right;
+  }
+}
 // We use tab-collapse.js to swith the lang picker tabs to accordion on mobile devices
+#fluke-modal {
 @media (max-width: $screen-xs-max) {
   .panel-group .panel + .panel {
     margin-top: 0;
+  }
+  .panel-group {
+    margin-right: 10px;
+    margin-left: 10px;
   }
   .modal-body {
     padding: 0 5px;
@@ -201,6 +235,8 @@ a.well {
     border-bottom: 1px solid $fluke-lines-and-pipes;
   }
 }
+}
+
 //removes padding from heading so a larger area is clickable
 // TODO: posibly udate through variables?
 .panel-heading {
@@ -230,10 +266,15 @@ a.well {
   padding: 0;
 }
 }
-
-
-.country-select-prompt {
-  min-height: 190px;
+// The world map image gets used in 2 modals. If one of those gets cut, make the image an inline svg to reduce external file calls
+.world-map {
+  width: auto;
+  min-height: 170px;
+  margin: 15px;
+  background: url(../images/world-map.svg);
+  background-size: 350px auto;
+  background-repeat: no-repeat;
+  background-position: center;
   h2 {
     text-align: center;
     font-weight: 700;
@@ -241,18 +282,6 @@ a.well {
     top: 70px;
     z-index: 1;
     margin-top: 0;
-  }
-  #world-map {
-    @media (max-width: 350px) {
-      width: auto;
-    }
-    width: 350px;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 10px;
-    position: absolute;
   }
 }
 /* This is in the country picker.  This css was adapted from the 
