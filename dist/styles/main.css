@@ -5169,7 +5169,7 @@ button.close {
 
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 1020px;
+    width: auto;
     margin: 30px auto; }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -5179,7 +5179,7 @@ button.close {
 
 @media (min-width: 1033px) {
   .modal-lg {
-    width: 1020px; } }
+    width: 900px; } }
 
 .tooltip {
   position: absolute;
@@ -5914,20 +5914,16 @@ a.well {
 
 .modal-header {
   background: #FFF; }
-
-.close {
-  margin-right: 25px; }
-  .close:first-child {
-    display: inline-block;
-    margin-top: 5px; }
-
-.x-icon {
-  font-size: 30px;
-  color: #CCC;
-  font-weight: bold;
-  position: absolute;
-  right: 20px;
-  top: 7px; }
+  .modal-header .btn-link {
+    float: right;
+    margin-right: 25px; }
+  .modal-header .x-icon {
+    font-size: 30px;
+    color: #A7A7A7;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 7px; }
 
 .tab-pane .country-group {
   display: inline-block;
@@ -5953,6 +5949,9 @@ a.well {
       position: absolute;
       right: 0;
       top: 0; }
+
+.modal-body {
+  padding-top: 0; }
 
 @media (max-width: 767px) {
   .panel-group .panel + .panel {
@@ -5984,6 +5983,27 @@ a.well {
         transform: rotate(45deg); }
   .js-tabcollapse-panel-body {
     padding: 0; } }
+
+.country-select-prompt {
+  min-height: 190px; }
+  .country-select-prompt h2 {
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    top: 70px;
+    z-index: 1;
+    margin-top: 0; }
+  .country-select-prompt #world-map {
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 10px;
+    position: absolute; }
+    @media (max-width: 350px) {
+      .country-select-prompt #world-map {
+        width: auto; } }
 
 /* This is in the country picker.  This css was adapted from the 
 countryicons_shiny module. We weren't using the icon
@@ -6497,3 +6517,5 @@ requirement countryicons. This css has been adapted to support uppercase classna
     background-position: -52px -1985px; }
   .countryicon-sprite.iconset-shiny.countrycode-fc {
     background-position: -52px -1985px; }
+
+/*# sourceMappingURL=dist/styles/main.css.map */

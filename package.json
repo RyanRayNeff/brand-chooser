@@ -17,6 +17,7 @@
     "gulp-inline-source": "^3.1.0",
     "gulp-notify": "^3.0.0",
     "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
     "gulp-uncss": "^1.0.6",
     "wiredep": "^4.0.0"
   }

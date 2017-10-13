@@ -127,23 +127,19 @@ a.well {
 
  .modal-header {
   background: $fluke-white;
-}
-.close {
-  margin-right: 25px;
-  &:first-child {
-    display: inline-block;
-    margin-top: 5px;
+  .btn-link {
+    float: right;
+    margin-right: 25px;
+  }
+  .x-icon {
+    font-size: 30px;
+    color: $fluke-gray-links;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 7px;
   }
 }
-.x-icon {
- font-size: 30px;
- color: $fluke-lines-and-pipes;
- font-weight: bold;
- position: absolute;
- right: 20px;
- top: 7px;
-}
-
 
 .tab-pane {
   .country-group {
@@ -180,7 +176,9 @@ a.well {
     }
   }
 }
-   
+.modal-body {
+  padding-top: 0;
+}
 // We use tab-collapse.js to swith the lang picker tabs to accordion on mobile devices
 @media (max-width: $screen-xs-max) {
   .panel-group .panel + .panel {
@@ -231,6 +229,31 @@ a.well {
 .js-tabcollapse-panel-body {
   padding: 0;
 }
+}
+
+
+.country-select-prompt {
+  min-height: 190px;
+  h2 {
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    top: 70px;
+    z-index: 1;
+    margin-top: 0;
+  }
+  #world-map {
+    @media (max-width: 350px) {
+      width: auto;
+    }
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 10px;
+    position: absolute;
+  }
 }
 /* This is in the country picker.  This css was adapted from the 
 countryicons_shiny module. We weren't using the icon

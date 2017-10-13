@@ -7,6 +7,7 @@ var browserSync = require('browser-sync');
 var htmlmin = require('gulp-htmlmin');
 var inlinesource = require('gulp-inline-source');
 var uncss = require('gulp-uncss');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -31,6 +32,7 @@ gulp.task('styles', function(){
   };
 
   return gulp.src('src/main.scss')
+  .pipe(sourcemaps.init())
     .pipe(wiredep())
     .pipe(inject(injectGlobalFiles, injectGlobalOptions))
     .pipe(inject(injectAppFiles, injectAppOptions))
@@ -76,6 +78,7 @@ gulp.task('styles', function(){
 
     // When inline injection is turned on, you'll want to switcht this back on
     //.pipe(gulp.dest('src/compiled-css'));
+    .pipe(sourcemaps.write('dist/styles'))
     .pipe(gulp.dest('dist/styles'));
 });
 
