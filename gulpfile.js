@@ -8,6 +8,7 @@ var htmlmin = require('gulp-htmlmin');
 var inlinesource = require('gulp-inline-source');
 var uncss = require('gulp-uncss');
 var sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -58,7 +59,7 @@ gulp.task('styles', function(){
                         /.panel.*/
                         ],
             }))
-
+    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4' ))
     // When inline injection is turned on, you'll want to switcht this back on
     .pipe(sourcemaps.write('src/compiled-css'))
     .pipe(gulp.dest('src/compiled-css'));
