@@ -37,67 +37,49 @@ gulp.task('styles', function(){
     .pipe(inject(injectGlobalFiles, injectGlobalOptions))
     .pipe(inject(injectAppFiles, injectAppOptions))
     .pipe(sass())
-//     .pipe(uncss({
-//             html: ['src/*.html'],
-//             ignore : [ /\.affix/,
-//                       /\.alert/,
-//                       /\.close/,
-//                       /\.collapse/,
-//                       /\.collapse\.in/,
-//                       /\.collapsing/,
-//                       /\.fade/,
-//                       /\.fade\.in/,
-//                       /\.has/,
-//                       /\.help/,
-//                       /\.in/,
-//                       /\.modal/,
-//                       /\.open/,
-//                       /\.popover/,
-//                       /\.tooltip/,
-//                       /\.tab-pane/,
-//                       /\.tab-pane\.active/,
-//                       /\.active/,
-//                       /\.js-tabcollapse-panel-body/,
-//                       /\.on/,
-//                       /\.shown/,
-//                       /\.bs/,
-//                       /\.panel-body/,
-//                       /\.show-tabs/,
-//                       /\.tabcollapse/,
-//                       /\.parentLi/,
-//                       /\.dropdown-menu/,
-//                       /\.collapsed/,
-//                       /\.tabpane/,
-//                       /\.tab-content/,
-//                       /\.panel-collapse/,
-//                       /\.panel-group/,
-//                       /\.hidden-xs/,
-//                       /\.accordion/,
-//                       /\.shown-accordion/,
-// /\.js-tabcollapse-panel-heading/],
-//             }))
+    .pipe(uncss({
+            html: ['src/*.html'],
+            ignore : [  // These support basic bootstrap functions
+                        /\.affix/,
+                        // /\.alert/,
+                        /\.close/,
+                        /\.collapse/,
+                        /\.fade/,
+                        /\.has/,
+                        // /\.help/,
+                        /\.in/,
+                        /\.modal/,
+                        /\.open/,
+                        // /\.popover/,
+                        // /\.tooltip/,
+                        // These support tab-collapse.js
+                        /\.visible-xs/,
+                        /\.hidden-xs/,
+                        /.panel.*/
+                        ],
+            }))
 
     // When inline injection is turned on, you'll want to switcht this back on
-    //.pipe(gulp.dest('src/compiled-css'));
-    .pipe(sourcemaps.write('dist/styles'))
-    .pipe(gulp.dest('dist/styles'));
+    .pipe(sourcemaps.write('src/compiled-css'))
+    .pipe(gulp.dest('src/compiled-css'));
+    // .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('html', ['styles'], function(){
  
   return gulp.src('src/index.html')
     // This inlines the css
-    // .pipe(inlinesource())
+    .pipe(inlinesource())
     
-    // This minifies html output. Comment it out to switch it off.
-    // .pipe(htmlmin({
-    //   collapseWhitespace: true,
-    //   minifyCSS: true,
-    //   minifyJS: true,
-    //   removeComments: true,
-    //   useShortDoctype: true
-    // }))
-    
+    // This minifies html output. 
+    .pipe(htmlmin({
+      collapseWhitespace: true,
+      minifyCSS: true,
+      minifyJS: true,
+      removeComments: true,
+      useShortDoctype: true
+    }))
+
     .pipe(gulp.dest('dist'))
     .pipe(notify({
       title: "SASS Compiled",

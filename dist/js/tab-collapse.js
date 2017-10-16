@@ -40,7 +40,7 @@
 
         }
     };
-    // TODO: WRITE A PATCH FOR THIS. IT TURNS ON TAB COLLAPSE EVEN IF THE TAB IS HIDDEN IN A MODAL-RRN
+
     TabCollapse.prototype.checkState = function(){
         if (this.$tabs.is(':visible') && this._accordionVisible){
             this.showTabs();
