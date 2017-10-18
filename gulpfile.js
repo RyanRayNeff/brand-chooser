@@ -59,7 +59,7 @@ gulp.task('styles', function(){
                         /.panel.*/
                         ],
             }))
-    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4' ))
+    .pipe(autoprefixer('last 5 versions', 'ie >= 8'))
     // When inline injection is turned on, you'll want to switcht this back on
     .pipe(sourcemaps.write('src/compiled-css'))
     .pipe(gulp.dest('src/compiled-css'));
@@ -77,7 +77,7 @@ gulp.task('html', ['styles'], function(){
       collapseWhitespace: true,
       minifyCSS: true,
       minifyJS: true,
-      removeComments: true,
+      //removeComments: true,
       useShortDoctype: true
     }))
 

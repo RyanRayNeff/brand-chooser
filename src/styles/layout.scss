@@ -9,9 +9,15 @@ header {
   background-size: cover;
   // Makes bg image scale from the bottom left, so the text doesnt lay over the images
   background-position: 0% 100%;
-  background-image:url('../images/Fluke-brand-choser-page-768x500.jpg');
+  background-image:url('./images/Fluke-brand-choser-page-768x500.jpg');
+  // filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+  //       src='.../images/Fluke-brand-choser-page-768x500.jpg',
+  //       sizingMethod='scale');
   @media (min-width: $screen-sm-min) {
-    background-image:url('../images/Fluke-brand-choser-page-1440x500.jpg');
+    background-image:url('./images/Fluke-brand-choser-page-1440x500.jpg');
+    // filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    //     src='../images/Fluke-brand-choser-page-1440x500.jpg',
+    //     sizingMethod='scale');
   }
   background-repeat: no-repeat;
   padding: 30px 0;
@@ -50,10 +56,24 @@ p.sub-title {
   margin-bottom: 35px;
 }
 // SVG brand logos with img fallbacks
-svg,
-img.brand-logo {
+svg {
   width: 160px;
 }
+  #fluke-logo {
+    height: 51px;
+  }
+  #fluke-cal-logo {
+    height: 61px;
+  }
+  #fluke-bio-logo {
+    height: 67px;
+  }
+  #fluke-process-logo {
+    height: 76px;
+  }
+  #fluke-networks-logo {
+    height: 45px;
+  }
 .fluke-logo {
   fill: #FFC20E;
 }
@@ -63,6 +83,8 @@ img.brand-logo {
 .fn-logo {
   fill: #253B6C;
 }
+// Static heights need to be assigned to the svgs to play nice with ie
+
 
 // Dropdown box in the 6th card
 .open > .dropdown-menu {
@@ -160,7 +182,7 @@ a.well {
   &:hover {
     color: black;
     &:after {
-      content: url(../images/angle-right.svg);
+      content: url(./images/angle-right.svg);
       position: absolute;
       right: 0;
       top: 0;
@@ -271,7 +293,7 @@ a.well {
   width: auto;
   min-height: 170px;
   margin: 15px;
-  background: url(../images/world-map.svg);
+  background: url(./images/world-map.svg);
   background-size: 350px auto;
   background-repeat: no-repeat;
   background-position: center;
@@ -291,7 +313,7 @@ requirement countryicons. This css has been adapted to support uppercase classna
 .countryicon-sprite.iconset-shiny {
   width: 16px; height: 11px;
   margin: 0; padding: 0;
-  background-image: url('../images/shiny-sprite.png');
+  background-image: url('./images/shiny-sprite.png');
   display:inline-block;
   margin-right: .5rem;
   &.countrycode-ad { background-position: 0 -10px; }
