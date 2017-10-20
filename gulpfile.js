@@ -10,6 +10,7 @@ var uncss = require('gulp-uncss');
 var sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 var del = require('del');
+var cssmin = require('gulp-cssmin');
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -61,6 +62,7 @@ gulp.task('styles', function(){
                         ],
             }))
     .pipe(autoprefixer('last 5 versions', 'ie >= 8'))
+    .pipe(cssmin())
     // When inline injection is turned on, you'll want to switcht this back on
     // .pipe(sourcemaps.write())
     .pipe(gulp.dest('src/compiled-css'));
