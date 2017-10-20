@@ -30,8 +30,8 @@
   <title>Fluke Corporation: Fluke Electronics, Biomedical, Calibration and Networks</title>
   
   <!-- This points to the compiled stylesheet that will be injected after it's compiled using npm gulp-inline-source -->
-  <!-- <link rel="stylesheet" href="../src/compiled-css/main.css" inline> -->
-   <link rel="stylesheet" href="styles/main.css" inline>
+  <link rel="stylesheet" href="compiled-css/main.css" inline>
+   <!-- link rel="stylesheet" href="styles/main.css" inline> -->
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -46,12 +46,9 @@
     @-o-viewport        { width: device-width; }
     @viewport           { width: device-width; }
   </style>
-<!-- TODO: Would 'dl' be a more semantically appropriate tag for the lang chooser stuff? (Turn it back on in type.less-->
-
 </head>
 
 <body>
-  <!-- Main jumbotron for a primary marketing message or call to action -->
   <header>
     <div class="full-background">
       <div class="container">
@@ -90,7 +87,7 @@
               </svg>
               <!--<![endif]-->
               <!--[if lte IE 8]>
-                <img alt="Fluke Logo" title="Fluke Industrial Group" src="images/fluke_logo.gif" width="160px" height="51px" >
+                <img alt="Fluke Logo" title="Fluke Industrial Group" src="/sites/all/themes/microstrap/images/fluke_logo.gif" width="160px" height="51px" >
               <![endif]-->
               <h2>Fluke Corporation</h2>
               <p class="slogan">Keeping your world up and running.&reg;</p>
@@ -530,7 +527,7 @@
               </svg>
               <!--<![endif]-->
               <!--[if lte IE 8]>
-                <img alt="Fluke Calibration Logo" title="Fluke Calibration" src="images/Fluke-brand-choser-fluke-cal-logo-160x65.gif" width="160px" height="61px" />
+                <img alt="Fluke Calibration Logo" title="Fluke Calibration" src="/sites/all/themes/microstrap/images/Fluke-brand-choser-fluke-cal-logo-160x65.gif" width="160px" height="61px" />
               <![endif]-->
               <h2>Fluke Calibration</h2>
               <p class="slogan">Precision, performance, confidence.&trade;</p>
@@ -609,7 +606,7 @@
               </svg>
               <!--<![endif]-->
               <!--[if lte IE 8]>
-                <img alt="Fluke Biomedical Logo" title="Fluke Biomedical" src="images/Fluke-brand-choser-fluke-bio-logo-160x65.gif" width="160px" height="67px" />
+                <img alt="Fluke Biomedical Logo" title="Fluke Biomedical" src="/sites/all/themes/microstrap/images/Fluke-brand-choser-fluke-bio-logo-160x65.gif" width="160px" height="67px" />
               <![endif]-->
               <h2>Fluke Biomedical</h2>
               <p class="slogan">Trusted for the measurements that matter.&trade;</p>
@@ -632,7 +629,7 @@
               </svg>
               <!--<![endif]-->
               <!--[if lte IE 8]>
-                <img alt="Fluke Process Instruments Logo" title="Fluke Process Instruments" src="images/Fluke-brand-choser-fluke-pi-logo-146x69.gif" width="160px" height="76px" />
+                <img alt="Fluke Process Instruments Logo" title="Fluke Process Instruments" src="/sites/all/themes/microstrap/images/Fluke-brand-choser-fluke-pi-logo-146x69.gif" width="160px" height="76px" />
               <![endif]-->
               <h2>Fluke Process Instruments</h2>
               <p class="slogan">Raytek, Ircon, Datapaq – Together we are Fluke Process Instruments.</p>
@@ -655,7 +652,7 @@
               </svg>
               <!--<![endif]-->
               <!--[if lte IE 8]>
-                <img alt="fluke networks logo" title="Fluke Networks" src="images/Fluke-brand-choser-fluke-networks-logo-160x45.gif" width="160px" height="45px"/>
+                <img alt="fluke networks logo" title="Fluke Networks" src="/sites/all/themes/microstrap/images/Fluke-brand-choser-fluke-networks-logo-160x45.gif" width="160px" height="45px"/>
               <![endif]-->
               <h2>Fluke Networks</h2>
               <p>Certification, troubleshooting, and installation tools for professionals who install and maintain critical network cabling infrastructure.</p>
@@ -693,8 +690,8 @@
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/tab-collapse.js"></script>
+  <script src="assets/javascript/customized-bootstrap.min.js" inline></script>
+  <script src="assets/javascript/tab-collapse.js" inline></script>
   <script type="text/javascript">
     /* This fixes the IE10 viewport width bug, there is some javascript in the footer that helps with this too
      * See https://getbootstrap.com/docs/3.3/getting-started/#support-ie10-width
@@ -710,13 +707,14 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     )
   document.querySelector('head').appendChild(msViewportStyle)
 }
+
 </script>
 
 <!-- This script is for browserstack testing only, remove it in production -->
 <script type="text/javascript">
   //$('#fluke-ig-tabs').tabCollapse();
   $(window).on('load',function(){
-   //$('#fluke-modal').modal('show');
+   $('#fluke-modal').modal('show');
         //$('#fluke-ig-tabs').tabCollapse();
         //$(window).resize();
         //$('#fluke-ig-tabs').tabCollapse();

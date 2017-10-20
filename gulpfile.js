@@ -9,6 +9,7 @@ var inlinesource = require('gulp-inline-source');
 var uncss = require('gulp-uncss');
 var sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
+var del = require('del');
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -38,49 +39,49 @@ gulp.task('styles', function(){
     .pipe(inject(injectGlobalFiles, injectGlobalOptions))
     .pipe(inject(injectAppFiles, injectAppOptions))
     .pipe(sass())
-    // .pipe(uncss({
-    //         html: ['src/*.html'],
-    //         ignore : [  // These support basic bootstrap functions
-    //                     /\.affix/,
-    //                     // /\.alert/,
-    //                     /\.close/,
-    //                     /\.collapse/,
-    //                     /\.fade/,
-    //                     /\.has/,
-    //                     // /\.help/,
-    //                     /\.in/,
-    //                     /\.modal/,
-    //                     /\.open/,
-    //                     // /\.popover/,
-    //                     // /\.tooltip/,
-    //                     // These support tab-collapse.js
-    //                     /\.visible-xs/,
-    //                     /\.hidden-xs/,
-    //                     /.panel.*/
-    //                     ],
-    //         }))
+    .pipe(uncss({
+            html: ['src/*.html'],
+            ignore : [  // These support basic bootstrap functions
+                        /\.affix/,
+                        // /\.alert/,
+                        /\.close/,
+                        /\.collapse/,
+                        /\.fade/,
+                        /\.has/,
+                        // /\.help/,
+                        /\.in/,
+                        /\.modal/,
+                        /\.open/,
+                        // /\.popover/,
+                        // /\.tooltip/,
+                        // These support tab-collapse.js
+                        /\.visible-xs/,
+                        /\.hidden-xs/,
+                        /.panel.*/
+                        ],
+            }))
     .pipe(autoprefixer('last 5 versions', 'ie >= 8'))
     // When inline injection is turned on, you'll want to switcht this back on
-    .pipe(sourcemaps.write())
-    // .pipe(gulp.dest('src/compiled-css'));
-    .pipe(gulp.dest('dist/styles'));
+    // .pipe(sourcemaps.write())
+    .pipe(gulp.dest('src/compiled-css'));
+    // .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('html', ['styles', 'copy-images', 'copy-favicons', 'copy-javascript'], function(){
  
   return gulp.src('src/index.html')
-    // This inlines the css
-    //.pipe(inlinesource())
+   
     
-    // This minifies html output. 
-    // .pipe(htmlmin({
-    //   collapseWhitespace: true,
-    //   minifyCSS: true,
-    //   minifyJS: true,
-    //   //removeComments: true,
-    //   useShortDoctype: true
-    // }))
-
+    //This minifies html output. 
+    .pipe(htmlmin({
+      collapseWhitespace: true,
+      minifyCSS: true,
+      minifyJS: true,
+      //removeComments: true,
+      //useShortDoctype: true
+    }))
+     // This inlines the css
+    .pipe(inlinesource())
     .pipe(gulp.dest('dist'))
     .pipe(notify({
       title: "SASS Compiled",
@@ -119,4 +120,9 @@ gulp.task('copy-favicons', function () {
 gulp.task('copy-javascript', function () {
     gulp.src('src/assets/javascript/*')
         .pipe(gulp.dest('dist/js'));
+});
+
+//deletes everything in the dist folder before rebuilding
+gulp.task('clean', function(cb){
+  del(['dist'], cb);
 });

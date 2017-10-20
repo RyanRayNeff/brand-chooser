@@ -9,15 +9,9 @@ header {
   background-size: cover;
   // Makes bg image scale from the bottom left, so the text doesnt lay over the images
   background-position: 0% 100%;
-  background-image:url('../images/Fluke-brand-choser-page-768x500.jpg');
-  // filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
-  //       src='.../images/Fluke-brand-choser-page-768x500.jpg',
-  //       sizingMethod='scale');
+  background-image:url('/sites/all/themes/microstrap/images/Fluke-brand-choser-page-768x500.jpg');
   @media (min-width: $screen-sm-min) {
-    background-image:url('../images/Fluke-brand-choser-page-1440x500.jpg');
-    // filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
-    //     src='../images/Fluke-brand-choser-page-1440x500.jpg',
-    //     sizingMethod='scale');
+    background-image:url('/sites/all/themes/microstrap/images/Fluke-brand-choser-page-1440x500.jpg');
   }
   background-repeat: no-repeat;
   padding: 30px 0;
@@ -140,11 +134,11 @@ a.well {
      min-height: 270px;
    }
    @media (min-width: $screen-md-min) {
-     min-height: 280px;
+     min-height: 285px; // This looks like too much space in chrome, but is required to stack boxes correctly in firefox
    }
-   @media (min-width: $screen-lg-min) {
-     min-height: 270px;
-   }
+   // @media (min-width: $screen-lg-min) {
+   //   min-height: 270px;
+   // }
  }
 
  .modal-header {
@@ -182,7 +176,8 @@ a.well {
   &:hover {
     color: black;
     &:after {
-      content: url(../images/angle-right.svg);
+      content: url(/sites/all/themes/microstrap/images/angle-right.png);
+      content: url(/sites/all/themes/microstrap/images/angle-right.svg);
       position: absolute;
       right: 0;
       top: -4px;
@@ -293,8 +288,9 @@ a.well {
   width: auto;
   min-height: 170px;
   margin: 15px;
-  background: url(../images/world-map.svg);
-  background-size: 350px auto;
+  background: url(/sites/all/themes/microstrap/images/world-map.png); //ie8 fallback image
+  background: url(/sites/all/themes/microstrap/images/world-map.svg), linear-gradient(transparent, transparent);
+  //background-size: 350px auto;
   background-repeat: no-repeat;
   background-position: center;
   h2 {
@@ -313,7 +309,7 @@ requirement countryicons. This css has been adapted to support uppercase classna
 .countryicon-sprite.iconset-shiny {
   width: 16px; height: 11px;
   margin: 0; padding: 0;
-  background-image: url('../images/shiny-sprite.png');
+  background-image: url('/sites/all/themes/microstrap/images/shiny-sprite.png');
   display:inline-block;
   margin-right: .5rem;
   &.countrycode-ad { background-position: 0 -10px; }
