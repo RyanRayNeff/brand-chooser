@@ -1,0 +1,1 @@
+Drupal.locale = { 'strings': {"":{"@enabled of @total":"@enabled de @total","Hide":"Masquer","read more":"Lire la suite","read less":"Lire moins","Read more":"Lire la suite","Read less":"Lire moins"}} };

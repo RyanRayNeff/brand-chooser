@@ -11,6 +11,7 @@ var sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 var del = require('del');
 var cssmin = require('gulp-cssmin');
+var rename = require("gulp-rename");
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -34,7 +35,7 @@ gulp.task('styles', function(){
     addRootSlash: false
   };
 
-  return gulp.src('src/main.scss')
+  return gulp.src('src/brand-chooser.scss')
   .pipe(sourcemaps.init())
     .pipe(wiredep())
     .pipe(inject(injectGlobalFiles, injectGlobalOptions))
@@ -63,10 +64,11 @@ gulp.task('styles', function(){
             }))
     .pipe(autoprefixer('last 5 versions', 'ie >= 8'))
     .pipe(cssmin())
+    .pipe(rename({suffix: '.min'}))
     // When inline injection is turned on, you'll want to switcht this back on
-    // .pipe(sourcemaps.write())
-    .pipe(gulp.dest('src/compiled-css'));
-    // .pipe(gulp.dest('dist/styles'));
+    .pipe(sourcemaps.write())
+    //.pipe(gulp.dest('src/compiled-css'));
+     .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('html', ['styles', 'copy-images', 'copy-favicons', 'copy-javascript'], function(){
@@ -79,7 +81,7 @@ gulp.task('html', ['styles', 'copy-images', 'copy-favicons', 'copy-javascript'],
       collapseWhitespace: true,
       minifyCSS: true,
       minifyJS: true,
-      //removeComments: true,
+      removeComments: true,
       //useShortDoctype: true
     }))
      // This inlines the css

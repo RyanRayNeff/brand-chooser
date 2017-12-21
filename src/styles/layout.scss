@@ -95,15 +95,15 @@ a.well {
 .well {
   // This supports the child dropdown selectors absolute positioning
   @media (min-width: $screen-sm-min) {
-
-
     position: relative;
+    .faux-link,
     .btn-group {
       position: absolute;
       bottom: 0;
       left: 0;
-      padding: 0 15px 15px;
+      padding: 0 19px 15px;
     }
+
   }
   h2 {
     color: $fluke-blue-link;
@@ -112,33 +112,39 @@ a.well {
   .btn {
     line-height: 1.5;
     text-align: left;
+        &[aria-expanded="false"] {
+     .caret {
+      transform: rotate(180deg);
+    transition: all .25s ease-in;
+     }
+    }
     .caret {
       float: right;
       margin-top: 7px;
+      transform: rotate(0deg);
+      transition: all .25s ease-out;
     }
   }
-  // &[data-toggle] {
     transition: border 0.3s ease-in-out;
-    &:after {
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-    }
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     &:hover {
       cursor: pointer;
-      // transform: scale(1.02, 1.02);
       border: 1px solid $fluke-yellow;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+         .faux-link {
+    color: $fluke-blue-hover;
+  }
     }
     @media (min-width: $screen-sm-min) {
-     min-height: 270px;
+     min-height: 285px;
    }
    @media (min-width: $screen-md-min) {
-     min-height: 285px; // This looks like too much space in chrome, but is required to stack boxes correctly in firefox
+     min-height: 300px; // This looks like too much space in chrome, but is required to stack boxes correctly in firefox
    }
-   // @media (min-width: $screen-lg-min) {
-   //   min-height: 270px;
-   // }
+   .faux-link {
+    font-size: 16px;
+    margin: 0;
+    color: $fluke-blue-link;
+  }
  }
 
  .modal-header {
