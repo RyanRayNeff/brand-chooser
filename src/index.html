@@ -34,6 +34,22 @@
 <meta name="msvalidate.01" content="BF4D61A7AB067C7F2D910E4A4B1C77C7" />
 
   <title>Fluke Corporation: Fluke Electronics, Biomedical, Calibration and Networks</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  
+  <script>
+    /*
+     * When the user visits this site and selects a fluke IG site,
+     * a cookie is created that lasts for 24
+     * hours. If the cookie exsists, the user gets automatically redirected.
+     * Uses this library to suport cookies: 
+     * https://github.com/js-cookie/js-cookie
+     */
+    if (Cookies.get('flukesiteredirect')) {
+      window.location.replace(Cookies.get('flukesiteredirect'));
+    }
+  </script>
+
   <!-- <link rel="stylesheet" href="/src/compiled-css/brand-chooser.min.css"> -->
   <!-- <link rel="stylesheet" href="/styles/brand-chooser.min.css"> -->
   <link rel="stylesheet" href="/sites/all/themes/microstrap/css/brand-chooser.min.css">
@@ -52,7 +68,7 @@
     @viewport           { width: device-width; }
   </style>
 <!-- Eloqua tracking, see Melissa Muller for details -->
-  <script type="text/javascript">
+  <script>
     var _elqQ = _elqQ || [];
     _elqQ.push(['elqSetSiteId', '1182545284']);
     _elqQ.push(['elqTrackPageView']);
@@ -68,7 +84,7 @@
     })();
 </script>
 <!-- Double-click add tracking. dc.js has been depricated in favor of analytics.js, reached out to Jon Gardiner for updated script on 10-20-17  -->
-<script type="text/javascript" async="" src="http://stats.g.doubleclick.net/dc.js"></script>
+<script async="" src="http://stats.g.doubleclick.net/dc.js"></script>
 </head>
 
 <body>
@@ -719,35 +735,51 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="assets/javascript/customized-bootstrap.min.js" inline></script>
   <script src="assets/javascript/tab-collapse.js" inline></script>
-  <script type="text/javascript">
-    /* This fixes the IE10 viewport width bug, there is some javascript in the footer that helps with this too
+  <script>
+    /* 
+     * This fixes the IE10 viewport width bug, there is some javascript in the footer that helps with this too
      * See https://getbootstrap.com/docs/3.3/getting-started/#support-ie10-width
      */
     // Copyright 2014-2015 Twitter, Inc.
-// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-  var msViewportStyle = document.createElement('style')
-  msViewportStyle.appendChild(
-    document.createTextNode(
-      '@-ms-viewport{width:auto!important}'
-      )
-    )
-  document.querySelector('head').appendChild(msViewportStyle)
-}
+    // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+      var msViewportStyle = document.createElement('style')
+      msViewportStyle.appendChild(
+        document.createTextNode(
+          '@-ms-viewport{width:auto!important}'
+          )
+        )
+      document.querySelector('head').appendChild(msViewportStyle)
+    }
 
-</script>
+  </script>
 
-<script type="text/javascript">
-// This will load the modal on pageload, it's for testing only.
+  <script>
+  // This will load the modal on pageload, it's for testing only.
   // $(window).on('load',function(){
   //  //$('#fluke-modal').modal('show');
   //      });
-  
+    
   // tabcollapse depends on visiblity, since models are hidden by default,
   // this tweaks the modal on open to fire off tabcollapse for mobile devices
   $('#fluke-modal').on('shown.bs.modal', function () {
       $(window).resize();      
       $('#fluke-ig-tabs').tabCollapse();
+    });
+  </script>
+
+  <script>
+    /*
+     * When the user visits this site and selects a fluke IG site,
+     * this script creates a cookie that lasts for 24 hours.
+     * If the cookie exsists, the user gets automatically redirected.
+     * The code that handles the redirects, as well as the cookies-js 
+     * library, is loaded in the head before anything else.
+     * https://github.com/js-cookie/js-cookie
+     */
+    $('#fluke-ig-tabs-content a').click(function() {
+      //alert($(this).attr('href') + "Handler for .click() called." );
+      Cookies.set('flukesiteredirect', $(this).attr('href'), { expires: 1 });
     });
   </script>
 
