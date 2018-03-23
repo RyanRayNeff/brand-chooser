@@ -23,5 +23,8 @@
     "gulp-uncss": "^1.0.6",
     "rename": "^1.0.4",
     "wiredep": "^4.0.0"
+  },
+  "dependencies": {
+    "js-cookie": "^2.2.0"
   }
 }
