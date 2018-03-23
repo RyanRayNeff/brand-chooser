@@ -25,6 +25,7 @@
     "wiredep": "^4.0.0"
   },
   "dependencies": {
+    "browser-sync": "^2.23.6",
     "js-cookie": "^2.2.0"
   }
 }
